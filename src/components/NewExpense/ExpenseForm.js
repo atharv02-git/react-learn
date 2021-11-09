@@ -6,9 +6,22 @@ const ExpenseForm = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  // Another approach for the same is using object
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: "",
+  //   enteredAmount: "",
+  //   enteredDate: "",
+  // });
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value});
+    // If we are using multiple states at a single time and you need to depend on previous state  then we need to use function inside a function
+    // setUserInput = ((prevState)=>{
+    //   return{...prevState, enteredTitle: event.target.value};
+    // });
   };
 
   const amountChangeHandler = (event) => {
