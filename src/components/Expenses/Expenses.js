@@ -19,26 +19,14 @@ const Expenses = (props) => {
           onChangeFilteredYear={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        <ExpenseItem
-          title={props.ExpenseItems[0].title}
-          amount={props.ExpenseItems[0].amount}
-          date={props.ExpenseItems[0].date}
-        />
-        <ExpenseItem
-          title={props.ExpenseItems[1].title}
-          amount={props.ExpenseItems[1].amount}
-          date={props.ExpenseItems[1].date}
-        />
-        <ExpenseItem
-          title={props.ExpenseItems[2].title}
-          amount={props.ExpenseItems[2].amount}
-          date={props.ExpenseItems[2].date}
-        />
-        <ExpenseItem
-          title={props.ExpenseItems[3].title}
-          amount={props.ExpenseItems[3].amount}
-          date={props.ExpenseItems[3].date}
-        />
+        {/* Adding list dynamically using map */}
+        {props.ExpenseItems.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
