@@ -15,6 +15,20 @@ const Expenses = (props) => {
   const filteredExpenses = props.ExpenseItems.filter((expenseItems) => {
     return expenseItems.date.getFullYear().toString() === filteredYear;
   });
+
+  // To check if list has null products or not
+  let expensesContent = <p>Oops, No expenses found!</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <div>
       <Card className="expenses">
@@ -23,18 +37,7 @@ const Expenses = (props) => {
           onChangeFilter={filterChangeHandler}
         />
         {/* Adding list dynamically using map */}
-        {filteredExpenses.length === 0 ? (
-          <p>Oops, no expenses found :(</p>
-        ) : (
-          filteredExpenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          ))
-        )}
+        {expensesContent}
       </Card>
     </div>
   );
